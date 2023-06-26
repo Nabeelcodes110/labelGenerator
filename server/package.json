@@ -1,7 +1,10 @@
 {
+
   "scripts": {
-    "start" : "nodemon index.js"
+    "start" : "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "dependencies": {
     "@prisma/client": "^4.16.1",
     "cors": "^2.8.5",
@@ -12,5 +15,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
-  }
+  },
+
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  
+  "author": "",
+  "license": "ISC"
+
 }
