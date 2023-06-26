@@ -7,9 +7,11 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model login {
-    login_id  Int    @id @default(autoincrement())
-    username  String
-    password  String
-    reg_email String
+model lbl_login {
+    id         Int      @id @default(autoincrement())
+    username   String
+    password   String
+    created_at DateTime @default(now())
+
+    @@map("lbl_login")
 }
