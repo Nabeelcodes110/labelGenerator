@@ -1,4 +1,3 @@
-const { connect } = require("../routes/v1/login");
 const { connection: db } = require("../utils/connectToDatabase");
 
 
