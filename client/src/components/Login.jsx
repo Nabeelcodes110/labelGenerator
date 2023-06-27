@@ -67,9 +67,10 @@ const Login = (props)=>{
             setformerror({auth:"Invalid credentials"})
             setisSubmit(false)
         }
-    
+        
     
     }
+    CheckUser()
      
 
    }
@@ -90,7 +91,7 @@ const Login = (props)=>{
             <form onSubmit={handleSubmit}>
             <input name="Username"   onChange={handleChange} className="name" placeholder="Username" value={userinfo.Username}/>
             <p>{formerror.Username}</p>
-            <input name="Password"  onChange={handleChange} className="email" placeholder="Password" value={userinfo.Password} />
+            <input name="Password"  onChange={handleChange} className="password" placeholder="Password" value={userinfo.Password} />
             <p>{formerror.Password}</p>
              <button className="btn btn-light submit">Submit</button>  
              <p>{formerror.auth}</p> 
