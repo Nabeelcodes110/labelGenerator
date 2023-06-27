@@ -1,11 +1,13 @@
 const express = require("express");
 const helmet = require("helmet");
+const bodyParser = require('body-parser')
 const cors = require("cors");
 const { connectToDatabase } = require("./utils/connectToDatabase");
 require("dotenv").config();
 
 const app = express();
-
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(helmet());

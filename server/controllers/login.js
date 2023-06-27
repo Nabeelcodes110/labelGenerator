@@ -1,8 +1,13 @@
 const { connect } = require("../routes/v1/login");
 const { connection: db } = require("../utils/connectToDatabase");
 
-const loginFunc = (req, res) => {
-  const { Username, Password } = req.body;
+
+const loginFunc = async(req, res) => {
+  // const { Username, Password } = req.body;
+  const Username = req.body.Username;
+  const Password = req.body.Password;
+
+  
 
   if (Username.trim().length == 0 || Password.trim().length == 0) {
     return res.status(400).json({
