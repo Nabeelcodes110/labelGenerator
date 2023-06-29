@@ -1,13 +1,14 @@
 import React from "react";
-import data from "../testarray";
+
 
 const ItemSearched = (props)=>{
     
 
 
     const SearchResult = (search,drop)=>{
+        console.log(props.item)
 
-        const result = data.filter((e)=>{
+        const result = props.item.filter((e)=>{
             
             return e[drop].toLowerCase().includes(search.toLowerCase())
            
@@ -40,12 +41,12 @@ const ItemSearched = (props)=>{
             <div className="search-result table-header">
                 <div>Item id </div>
                 <div>Item Name</div>                 
-                <div>Part Number</div>
+                <div>Part Code</div>
                 <div>cas Number</div>
 
             </div>
 
-            { props.searchvalue==""?data?.map((res) => (
+            { props.searchvalue==""?props.item?.map((res) => (
                 <div className="search-result">
                 <div>{res.item_id}</div>
                 <div>{res.item_name}</div>                 
