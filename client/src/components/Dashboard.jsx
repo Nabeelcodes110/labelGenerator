@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { user } from "./Login";
 import ItemSearched from "./ItemSearched";
 
@@ -6,12 +6,43 @@ const Dashboard = ()=>{
 
     const [dropdownvalue,setDropdownvalue] = useState('item_name')
     const [search,setSearch]=useState("")
+    const [item,setitem]=useState([])
 
     const handleChange=(e)=>{
 
         setSearch(e.target.value)
 
     }
+
+    useEffect(()=>{
+
+      const getitemarray =async ()=>{
+
+        const responsestore = await fetch("http://localhost:4000/api/v1/search",{
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+              },   
+        
+            })
+            .catch((err)=>console.log(err))
+
+            const message = await responsestore.json()
+            setitem(message.data)
+
+           
+
+
+            if(!message.success==true){
+                
+              alert("not able to access item")
+           
+            }
+      }
+      getitemarray()
+            
+    },[])
 
 
     return (
@@ -54,7 +85,7 @@ const Dashboard = ()=>{
     </div>
   </div>
 </nav>
-<ItemSearched dropvalue={dropdownvalue} searchvalue={search} />
+<ItemSearched dropvalue={dropdownvalue} searchvalue={search} item={item} />
 
         </div>
     )
