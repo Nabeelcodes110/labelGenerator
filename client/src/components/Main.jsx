@@ -3,9 +3,9 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 
 const Main = ()=>{
-    let [profile,setprofile]=useState(false)
+    let [profile,setprofile]=useState(true)// change this to false later
     
-    return(<div className="content-bg">{profile===false? (<Login setprofile={setprofile}/>):(<Dashboard />)}</div>)
+    return(<div className="container content-bg">{profile===false? (<Login setprofile={setprofile}/>):(<Dashboard />)}</div>)
         
 }
 
