@@ -1,3 +1,37 @@
+body{
+    background-color: whitesmoke;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    
+}
+.get-profile-box p{
+    margin-bottom: 1.5rem;
+}
+.get-profile-box input{
+    border-radius: 5px;
+    border-width: 0.5px;
+   
+    
+}
+.get-profile-box button{
+    background-color: lightgray;
+}
+.get-profile-div{
+    display: flex;
+    height: 85vh;
+    justify-content: center;
+    align-items: center;
+}
+.get-profile-box{
+    box-shadow: 10px 10px 83px 0px rgba(128,123,128,1);
+    background-color: white;
+    padding: 38px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    height: 329px;
+    justify-content: space-around;
+}
+
 .search-result{
     display: flex;
     justify-content: space-between;

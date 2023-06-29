@@ -7,8 +7,13 @@ const Login = (props)=>{
     const [userinfo, setuserinfo]=useState({Username:"",Password:""})
     const [formerror,setformerror]=useState({})
     const [isSubmit , setisSubmit]=useState(false)
+    
 
     function handleChange(event){
+
+        setformerror(()=>{return{...formerror,
+            auth:""}})
+        
         const {name,value}=event.target;
        setuserinfo(()=>{
         return {
@@ -64,6 +69,7 @@ const Login = (props)=>{
             user.Password=userinfo.Password;
             props.setprofile(true);
         }else{
+          
             setformerror({auth:"Invalid credentials"})
             setisSubmit(false)
         }
@@ -91,7 +97,7 @@ const Login = (props)=>{
             <form onSubmit={handleSubmit}>
             <input name="Username"   onChange={handleChange} className="name" placeholder="Username" value={userinfo.Username}/>
             <p>{formerror.Username}</p>
-            <input name="Password"  onChange={handleChange} className="password" placeholder="Password" value={userinfo.Password} />
+            <input name="Password" type="password" onChange={handleChange} className="password" placeholder="Password" value={userinfo.Password} />
             <p>{formerror.Password}</p>
              <button className="btn btn-light submit">Submit</button>  
              <p>{formerror.auth}</p> 
