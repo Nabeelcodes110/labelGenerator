@@ -1,12 +1,10 @@
+const { asyncErrorHandler } = require("../utils/asyncErrorHandler");
 const { connection: db } = require("../utils/connectToDatabase");
 
-
-const loginFunc = async(req, res) => {
+const loginFunc = asyncErrorHandler(async (req, res) => {
   // const { Username, Password } = req.body;
   const Username = req.body.Username;
   const Password = req.body.Password;
-
-  
 
   if (Username.trim().length == 0 || Password.trim().length == 0) {
     return res.status(400).json({
@@ -17,7 +15,7 @@ const loginFunc = async(req, res) => {
 
   const searchUser = (Username, Password, callback) => {
     const query =
-      "SELECT * FROM employee_registration WHERE login_name = ? AND password = ?";
+      "SELECT * FROM employee_registration WHERE login_name COLLATE latin1_bin = ? AND password COLLATE latin1_bin = ?";
     const values = [Username, Password];
 
     db.query(query, values, (err, results) => {
@@ -41,10 +39,10 @@ const loginFunc = async(req, res) => {
       }
       return res.status(200).json({
         auth: true,
-        data: "Login",
+        data: "Login successful",
       });
     }
   });
-};
+});
 
 module.exports = loginFunc;
