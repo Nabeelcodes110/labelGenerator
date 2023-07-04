@@ -1,31 +1,13 @@
-import React, { useState } from "react";
+import React from 'react'
 import {Link} from 'react-router-dom'
 
+const products = []
 
-
-const ItemSearched = (props)=>{
-
-    const SearchResult = (search,drop)=>{
-        console.log(props.item)
+function Analysis() {
+  return (
     
-        const result = props.item.filter((e)=>{
-            
-            return e[drop].toLowerCase().includes(search.toLowerCase())
-           
-        });
-        console.log(result)
-    
-        return result
-    }
-
-    const products = props.searchvalue=="" ? props.item : SearchResult(props.searchvalue,props.dropvalue)
-
-
-    console.log(products)
-    
-    return(
-        <div>   
-            <table className="table">
+    <div>
+       <table className="table">
                 <thead className= "table-light">
                     <tr>
                     <th scope="col">Item Id</th>
@@ -50,11 +32,8 @@ const ItemSearched = (props)=>{
                     }
                 </tbody>
             </table>
-        </div>
-
-
-    )
-
+    </div>
+  )
 }
 
-export default ItemSearched;
+export default Analysis

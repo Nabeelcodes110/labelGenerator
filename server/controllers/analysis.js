@@ -2,7 +2,7 @@ const { asyncErrorHandler } = require("../utils/asyncErrorHandler");
 const { connection: db } = require("../utils/connectToDatabase");
 
 const getCertificateAnalysis = asyncErrorHandler(async (req, res, next) => {
-  const { item_name, part_number } = req.body;
+  const { item_name, part_number } = req.query;
   const getProducts = (item_name, part_number, callback) => {
     const query =
       "SELECT a.item_group , a.part_number,a.item_name, a.speci_number ,a.batch_no , a.creator , a.approver from  certificate_of_analysis a WHERE a.part_number= ? AND a.status='Active' AND a.item_name = ?";
