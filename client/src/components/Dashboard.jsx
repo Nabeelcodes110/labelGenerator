@@ -49,7 +49,6 @@ const Dashboard = ()=>{
         <div>
             
             {user.Username}
-            {user.Password}
 
 
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
