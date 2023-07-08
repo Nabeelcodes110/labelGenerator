@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom'
-
-
+import {Link , useNavigate} from 'react-router-dom'
 
 const ItemSearched = (props)=>{
-
+    const navigate = useNavigate()
     const SearchResult = (search,drop)=>{
-        console.log(props.item)
     
         const result = props.item.filter((e)=>{
             
@@ -16,6 +13,12 @@ const ItemSearched = (props)=>{
         console.log(result)
     
         return result
+    }
+
+    const handleClick = (product)=>{
+        props.setProduct(product)
+        navigate('/analysis')
+        
     }
 
     const products = props.searchvalue=="" ? props.item : SearchResult(props.searchvalue,props.dropvalue)
@@ -39,19 +42,16 @@ const ItemSearched = (props)=>{
                         products?.map((product) => {
                             return(
                                 <tr>
-                                    <Link to='/analysis' style={{ textDecoration: 'none'}}>
                                     <th scope="row">{product.item_id}</th>
-                                    <td>{product.item_name}</td>
+                                    <td><span onClick={()=>{handleClick(product)}} style={{color : "blue" , cursor : 'pointer'}} >{product.item_name}</span></td>
                                     <td>{product.part_number}</td>
                                     <td>{product.cas_number}</td>  
-                                    </Link>
                                 </tr>
                         )})
                     }
                 </tbody>
             </table>
         </div>
-
 
     )
 

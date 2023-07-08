@@ -1,15 +1,18 @@
 import React from "react";
 
 // We use Route in order to define the different routes of our application
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Redirect } from "react-router-dom";
 import Main from "./components/Main";
+import { CookiesProvider } from "react-cookie";
 
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
-        <Main />
-      </BrowserRouter>
+      <CookiesProvider>
+        <BrowserRouter>
+          <Main />
+        </BrowserRouter>
+      </CookiesProvider>
     </div>
   );
 };

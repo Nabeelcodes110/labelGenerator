@@ -19,7 +19,7 @@ connectToDatabase();
 const PORT = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-  res.send("OK");
+  res.status(200).send("OK");
 });
 
 app.use("/api/v1", routes);
@@ -33,6 +33,6 @@ app.all("*", (req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
   console.log("Server started");
 });
