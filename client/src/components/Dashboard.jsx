@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { user } from "./Login";
 import ItemSearched from "./ItemSearched";
 
-const Dashboard = ()=>{
+
+const Dashboard = (props)=>{
+  const {setProduct} = props
 
     const [dropdownvalue,setDropdownvalue] = useState('item_name')
     const [search,setSearch]=useState("")
@@ -12,6 +14,12 @@ const Dashboard = ()=>{
 
         setSearch(e.target.value)
 
+    }
+
+    const handleLogout = ()=>{
+      props.setProfile(false)
+      props.removeCookie("login")
+      
     }
 
     useEffect(()=>{
@@ -31,9 +39,6 @@ const Dashboard = ()=>{
             const message = await responsestore.json()
             setitem(message.data)
 
-           
-
-
             if(!message.success==true){
                 
               alert("not able to access item")
@@ -47,7 +52,7 @@ const Dashboard = ()=>{
 
     return (
         <div>
-            
+     
             {user.Username}
 
 
@@ -79,12 +84,12 @@ const Dashboard = ()=>{
       </ul>
       <form class="d-flex" role="search">
         <input onChange={handleChange} value={search} class="form-control me-2" type="search" placeholder={"Search "+dropdownvalue} aria-label="Search" />
-        <button class="btn btn-outline-success"  type="submit">Search</button>
       </form>
+        <button class="btn btn-outline-danger"  type="submit" onClick={handleLogout}>Logout</button>
     </div>
   </div>
 </nav>
-<ItemSearched dropvalue={dropdownvalue} searchvalue={search} item={item} />
+<ItemSearched dropvalue={dropdownvalue} searchvalue={search} item={item} setProduct = {setProduct}/>
 
         </div>
     )

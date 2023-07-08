@@ -1,11 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Login from './Login'
 import Dashboard from './Dashboard'
+import { useCookies } from 'react-cookie';
+import Home from './Home';
+
+
 
 const Main = ()=>{
-    let [profile,setprofile]=useState(false)// change this to false later
+    const [cookies, setCookie , removeCookie] = useCookies(['user']);
+    const [profile , setProfile] = useState(false)
+    return(
+        <>
     
-    return(<div className="container-fluid content-bg">{profile===false? (<Login setprofile={setprofile}/>):(<Dashboard />)}</div>)
+        {!cookies?.login? 
+        (<Login setProfile = {setProfile} cookies = {cookies} setCookie = {setCookie} />)
+        :(<Home setProfile = {setProfile} cookies ={cookies} removeCookie = {removeCookie}/>)}
+        </>
+        )
         
 }
 

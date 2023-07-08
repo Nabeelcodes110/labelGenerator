@@ -1,9 +1,12 @@
 import React , { useEffect, useState }from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 let user = {Username:"",Password:""};
 
 const Login = (props)=>{
-
+    const navigate = useNavigate()
+    const [cookies, setCookie , removeCookie] = useCookies(['user']);
     const [userinfo, setuserinfo]=useState({Username:"",Password:""})
     const [formerror,setformerror]=useState({})
     const [isSubmit , setisSubmit]=useState(false)
@@ -67,7 +70,10 @@ const Login = (props)=>{
         if(message.auth==true){
             user.Username=userinfo.Username;
             user.Password=userinfo.Password;
-            props.setprofile(true);
+            props.setCookie('login' , true , 1, { path: '/' })
+            props.setProfile(cookies.login)
+            navigate('')
+
         }else{
           
             setformerror({auth:"Invalid credentials"})
@@ -91,7 +97,6 @@ const Login = (props)=>{
     
     return(
         <div className="get-profile-div">
-           
             <div className="get-profile-box">
             <h3>Login</h3>
             <form onSubmit={handleSubmit}>
