@@ -13,7 +13,7 @@ const Main = ()=>{
     return(
         <>
         <UserContext.Provider value={profile}>
-        {!profile ?
+        {!cookies.login ?
         (<Login setProfile =  {setProfile}/>)
         :(<Dashboard setProfile =  {setProfile}/>)}
         </UserContext.Provider>
