@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Redirect } from "react-router-dom";
 import Dashboard from './Dashboard';
 import Analysis from './Analysis';
 import CertificateAnalysis from './CertificateAnalysis';
+import Navbar2 from './Navbar2';
 
 function Home(props) {
   const {removeCookie , setProfile} = props

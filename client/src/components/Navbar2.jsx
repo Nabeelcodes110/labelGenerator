@@ -6,9 +6,7 @@ function Navbar2(props) {
     const [item,setitem]=useState([])
 
     const handleChange=(e)=>{
-
         setSearch(e.target.value)
-
     }
 
     const handleLogout = ()=>{
