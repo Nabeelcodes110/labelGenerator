@@ -1,10 +1,11 @@
-import React , { useEffect, useState }from "react";
+import React , { useEffect, useState ,useContext }from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
 let user = {Username:"",Password:""};
 
 const Login = (props)=>{
+    // const user = useContext(UserContext);
     const navigate = useNavigate()
     const [cookies, setCookie , removeCookie] = useCookies(['user']);
     const [userinfo, setuserinfo]=useState({Username:"",Password:""})
@@ -70,9 +71,8 @@ const Login = (props)=>{
         if(message.auth==true){
             user.Username=userinfo.Username;
             user.Password=userinfo.Password;
-            props.setCookie('login' , true , 1, { path: '/' })
-            props.setProfile(cookies.login)
-            navigate('')
+            setCookie('login' , true , 1, { path: '/' })
+            props.setProfile(true)
 
         }else{
           

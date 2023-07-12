@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState , createContext } from 'react'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import { useCookies } from 'react-cookie';
-import Home from './Home';
 
 
 
 const Main = ()=>{
     const [cookies, setCookie , removeCookie] = useCookies(['user']);
     const [profile , setProfile] = useState(false)
+    const UserContext = createContext()
+
     return(
         <>
-    
-        {!cookies?.login? 
-        (<Login setProfile = {setProfile} cookies = {cookies} setCookie = {setCookie} />)
-        :(<Home setProfile = {setProfile} cookies ={cookies} removeCookie = {removeCookie}/>)}
+        <UserContext.Provider value={profile}>
+        {!profile ?
+        (<Login setProfile =  {setProfile}/>)
+        :(<Dashboard setProfile =  {setProfile}/>)}
+        </UserContext.Provider>
         </>
         )
         

@@ -6,20 +6,19 @@ import Navbar2 from './Navbar2'
 
 
 function Analysis(props) {
-
+    console.log(props.product)
     const Navigate = useNavigate()
    
     const [selectedItemData , setSelectedItemData] = useState([])
-   
-    console.log(props.product)
-
 
     const handleClick = (obj)=>{
+        props.setProduct(obj)
         Navigate('/certificate')
     }
 
 
     useEffect(()=>{
+        props.setDropDown([{"value" : "batch_no" , "name" : "Batch Number"} , {"value" :"speci_number" , "name" :"Specification Number"}])
         const getSelectedItems = async (obj)=>{
             const responseData = await fetch("http://localhost:4000/api/v1/analysis?" +new URLSearchParams({         
                 'item_name': obj.item_name,
@@ -41,10 +40,6 @@ function Analysis(props) {
     } ,[])
   return (
     <>
-   
-
-    
-    <Navbar2 />
     <div style={{padding : 20}}>
        <table className="table">
                 <thead className= "table-light">

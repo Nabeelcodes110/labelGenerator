@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {Link , useNavigate} from 'react-router-dom'
 
 const ItemSearched = (props)=>{
+    console.log(props.product)
     const navigate = useNavigate()
     const SearchResult = (search,drop)=>{
     
